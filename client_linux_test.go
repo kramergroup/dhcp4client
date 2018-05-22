@@ -6,7 +6,7 @@ import (
 	"syscall"
 	"testing"
 
-	"github.com/d2g/dhcp4client"
+	"github.com/kramergroup/dhcp4client"
 )
 
 //Example Client
