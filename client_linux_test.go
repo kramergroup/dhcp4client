@@ -13,7 +13,7 @@ import (
 func Test_ExampleLinuxClient(test *testing.T) {
 	var err error
 
-	m, err := net.ParseMAC("08-00-27-00-A8-E8")
+	m, err := net.ParseMAC("3e-fb-5b-d5-a6-09")
 	if err != nil {
 		log.Printf("MAC Error:%v\n", err)
 	}
@@ -49,10 +49,10 @@ func Test_ExampleLinuxClient(test *testing.T) {
 
 	}
 
-	// offerPacket, err := exampleClient.GetOffer(&discoveryPacket)
-	// if err != nil {
-	// 	test.Fatalf("Offer Error:%v\n", err)
-	// }
+	offerPacket, err := exampleClient.GetOffer(&discoveryPacket)
+	if err != nil {
+		test.Fatalf("Offer Error:%v\n", err)
+	}
 	//
 	// requestPacket, err := exampleClient.SendRequest(&offerPacket)
 	// if err != nil {
