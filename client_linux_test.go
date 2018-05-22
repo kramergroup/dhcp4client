@@ -50,6 +50,8 @@ func Test_ExampleLinuxClient(test *testing.T) {
 	}
 
 	offerPacket, err := exampleClient.GetOffer(&discoveryPacket)
+	test.Logf("Offer:%v\n", offerPacket)
+
 	if err != nil {
 		test.Fatalf("Offer Error:%v\n", err)
 	}
