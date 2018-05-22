@@ -31,7 +31,7 @@ func Test_ExampleLinuxClient(test *testing.T) {
 	}
 	defer exampleClient.Close()
 
-	success := false
+	// success := false
 
 	discoveryPacket, err := exampleClient.SendDiscoverPacket()
 	test.Logf("Discovery:%v\n", discoveryPacket)
