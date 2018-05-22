@@ -3,10 +3,9 @@ package dhcp4client_test
 import (
 	"log"
 	"net"
-	"testing"
 	"syscall"
+	"testing"
 
-	"github.com/d2g/dhcp4"
 	"github.com/d2g/dhcp4client"
 )
 
@@ -50,38 +49,38 @@ func Test_ExampleLinuxClient(test *testing.T) {
 
 	}
 
-	offerPacket, err := exampleClient.GetOffer(&discoveryPacket)
-	if err != nil {
-		test.Fatalf("Offer Error:%v\n", err)
-	}
-
-	requestPacket, err := exampleClient.SendRequest(&offerPacket)
-	if err != nil {
-		test.Fatalf("Send Offer Error:%v\n", err)
-	}
-
-	acknowledgementpacket, err := exampleClient.GetAcknowledgement(&requestPacket)
-	if err != nil {
-		test.Fatalf("Get Ack Error:%v\n", err)
-	}
-
-	acknowledgementOptions := acknowledgementpacket.ParseOptions()
-	if dhcp4.MessageType(acknowledgementOptions[dhcp4.OptionDHCPMessageType][0]) != dhcp4.ACK {
-		test.Fatalf("Not Acknoledged")
-	} else {
-		success = true
-	}
-
-	test.Logf("Packet:%v\n", acknowledgementpacket)
-
-	if err != nil {
-		networkError, ok := err.(net.Error)
-		if ok && networkError.Timeout() {
-			test.Log("Test Skipping as it didn't find a DHCP Server")
-			test.SkipNow()
-		}
-		test.Fatalf("Error:%v\n", err)
-	}
+	// offerPacket, err := exampleClient.GetOffer(&discoveryPacket)
+	// if err != nil {
+	// 	test.Fatalf("Offer Error:%v\n", err)
+	// }
+	//
+	// requestPacket, err := exampleClient.SendRequest(&offerPacket)
+	// if err != nil {
+	// 	test.Fatalf("Send Offer Error:%v\n", err)
+	// }
+	//
+	// acknowledgementpacket, err := exampleClient.GetAcknowledgement(&requestPacket)
+	// if err != nil {
+	// 	test.Fatalf("Get Ack Error:%v\n", err)
+	// }
+	//
+	// acknowledgementOptions := acknowledgementpacket.ParseOptions()
+	// if dhcp4.MessageType(acknowledgementOptions[dhcp4.OptionDHCPMessageType][0]) != dhcp4.ACK {
+	// 	test.Fatalf("Not Acknoledged")
+	// } else {
+	// 	success = true
+	// }
+	//
+	// test.Logf("Packet:%v\n", acknowledgementpacket)
+	//
+	// if err != nil {
+	// 	networkError, ok := err.(net.Error)
+	// 	if ok && networkError.Timeout() {
+	// 		test.Log("Test Skipping as it didn't find a DHCP Server")
+	// 		test.SkipNow()
+	// 	}
+	// 	test.Fatalf("Error:%v\n", err)
+	// }
 
 	if !success {
 		test.Error("We didn't sucessfully get a DHCP Lease?")
